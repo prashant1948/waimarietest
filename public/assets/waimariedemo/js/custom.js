@@ -138,6 +138,67 @@ jQuery(document).ready(function () {
 
     });
 
+    $('.without-loop').owlCarousel({
+        autoPlay: true,
+        autoPlayTimeout: 1000,
+        autoPlayHoverPause: true,
+        items: 1,
+        singleitem: true,
+        loop: true,
+        center: false,
+        rewind: false,
+        mouseDrag: true,
+        touchDrag: true,
+        pullDrag: true,
+        freeDrag: false,
+        margin: 0,
+        stagePadding: 0,
+        merge: false,
+        mergeFit: true,
+        autoWidth: false,
+        startPosition: 0,
+        rtl: true,
+        smartSpeed: 250,
+        fluidSpeed: false,
+        dragEndSpeed: false,
+        responsive: {
+            0: {
+                items: 1
+                // nav: true
+            },
+            480: {
+                items: 2,
+                nav: false
+            },
+            768: {
+                items: 3,
+                // nav: true,
+                loop: false
+            },
+            992: {
+                items: 4,
+                // nav: true,
+                loop: false
+            }
+        },
+        responsiveRefreshRate: 200,
+        responsiveBaseElement: window,
+        fallbackEasing: "swing",
+        info: false,
+        nestedItemSelector: false,
+        autoHeight: false,
+        lazyLoad: false,
+        dots: false,
+        pagination:false,
+        navigation: true,
+        navigationText: [
+            "<i class='ion-ios-arrow-left'></i>",
+            "<i class='ion-ios-arrow-right'></i>"
+        ]
+
+
+    });
+
     $(".team-carousel").owlCarousel({
         autoPlay: true,
         autoPlayTimeout: 1000,

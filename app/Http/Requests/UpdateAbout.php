@@ -36,6 +36,9 @@ class UpdateAbout extends FormRequest
             'title'                 => $this->get('title'),
 //            'meta_description'      => $this->get('meta_description'),
             'content'               => $this->get('content'),
+          'experience'               => $this->get('experience'),
+          'volunteer'               => $this->get('volunteer'),
+          'work'               => $this->get('work'),
             'is_published'       => $this->get('is_published') ? $this->get('is_published'): 0,
             'is_featured'       => $this->get('is_featured') ? $this->get('is_featured'): 0
         ];

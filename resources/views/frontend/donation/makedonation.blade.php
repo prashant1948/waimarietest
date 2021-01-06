@@ -5,13 +5,48 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="banner-title">
-                        <h1>Make Donation
+                        <h1>Donation
                         </h1>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="partner-area ash-white-bg pdb80 empty-header">
+        <div class="container">
+
+            <div class="urgent-causes pdb20">
+
+                @foreach($donations as $donation)
+
+                <p>
+               {!! $donation->content !!}
+           </p>
+
+                    @endforeach
+
+            </div>
+
+
+            {{--<div class="urgent-causes pdt20">--}}
+                {{--<h3>--}}
+                    {{--Bequests – Leave a lasting legacy in your community!--}}
+
+                {{--</h3>--}}
+
+                {{--<p>--}}
+                    {{--Waimarie is committed to providing relevant, cost effective, easily accessible services to the local community.  By leaving a gift in your will, you will be supporting your local community and ensuring ongoing access to much needed community resources. You will be enhancing community well-being and helping make South East Hamilton a more integrated, vibrant and resilient place, with residents who are engaged, empowered, informed, and respectful of each other.--}}
+                {{--</p>--}}
+
+                {{--<p>--}}
+                    {{--If you would like more information about how to leave a bequest to Waimarie please contact us.--}}
+                {{--</p>--}}
+
+            {{--</div>--}}
+        </div>
+    </section>
+
 
     <div class="donate-page-content pdb90">
         <div class="container">
@@ -23,6 +58,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="row">
                 <div class="col-md-7">
                     <div class="donate-form">
@@ -31,30 +68,7 @@
                               method="post" class="form-newsletter">
                             @csrf
 
-                            <div class="donate-amount-list">
-                                <div class="donate-amount-item">
-                                    <input type="radio" name="donateamount" class="clicking" value="$50" id="amount50">
-                                    <label for="amount50">$50</label>
-                                </div>
-                                <div class="donate-amount-item">
-                                    <input type="radio" name="donateamount" class="clicking" value="$100" id="amount100">
-                                    <label for="amount100">$100</label>
-                                </div>
-                                <div class="donate-amount-item">
-                                    <input type="radio" name="donateamount" class="clicking" value="$150" id="amount150">
-                                    <label for="amount150">$150</label>
-                                </div>
-                                <div class="donate-amount-item">
-                                    <input type="radio" name="donateamount" class="clicking" value="$200" id="amount200">
-                                    <label for="amount200">$200</label>
-                                </div>
-                                <div class="donate-amount-item">
-                                    <input type="radio" name="donateamount" class="clicking" value="" id="amount-other">
-                                    <label for="amount-other">Other</label>
-                                </div>
-                            </div>
-
-                                                        <div class="single-input-box single-input-boxs hide">
+                                                        <div class="single-input-box single-input-boxs">
                             <input class="form-control" placeholder="YOUR DONATION AMOUNT* ......."
                             type="number" name="donationamount" id="donationamount">
                             </div>
@@ -97,31 +111,16 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <div class="causes-detial pdt20">
-                        <div class="image">
-                            <img src="{{asset('assets/waimariedemo/images/waimarie/donation.jpg')}}" class="img-responsive" alt="causes">
-                        </div>
-                        {{--<div class="causes-barfiller-item">--}}
-                            {{--<div class="raised">--}}
-                                {{--RAISED--}}
-                                {{--<span>$2345</span>--}}
-                            {{--</div>--}}
-                            {{--<div class="goal">--}}
-                                {{--GOAL--}}
-                                {{--<span>$3700</span>--}}
-                            {{--</div>--}}
-                            {{--<div class="clear"></div>--}}
-                            {{--<div id="causes-one-barfiller" class="barfiller">--}}
-                                {{--<div class="tipWrap">--}}
-                                    {{--<span class="tip"></span>--}}
-                                {{--</div>--}}
-                                {{--<span class="fill" data-percentage="40"></span>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+
+                    @foreach($donationformdetails as $donationformdetail)
+
+                    <div class="causes-detial">
+                            <img src={{asset($donationformdetail->image->path)}} class="img-responsive" alt="causes">
+
                         <div class="causes-header pdt20">
-                            <h4 class=" pdb10">Together we can build our community!</h4>
+                            <h4 class=" pdb10">{!! $donationformdetail->title !!}</h4>
                             <p>
-                                We support individuals and whanau by providing a range of community services designed to enhance personal and community well-being, empowerment and positive change.  We encourage respect and understanding of the Treaty of Waitangi and cultural diversity.  Services include: Free budgeting advice, legal advice and advocacy (WIN, housing, ACC and similar) community education courses, gardening, room hire, vegetable and fruit boxes, photocopying, information and referrals, and similar.
+                                {!! $donationformdetail->content !!}
                             </p>
                             <div class="row">
                                 <div class="col-xs-12">
@@ -138,6 +137,7 @@
                             </div>
                         </div>
                     </div><!--/.causes-detial-->
+                        @endforeach
                 </div>
             </div>
         </div>

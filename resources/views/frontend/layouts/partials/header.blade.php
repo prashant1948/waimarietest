@@ -59,8 +59,11 @@
                             DONATION
                         </a>
 
-
-                                                                    </div>
+                        <a href="/volunteer" class="doante-button logo-color">
+                            <span>BECOME A</span>
+                            VOLUNTEER
+                        </a>
+ </div>
                 </div>
             </div>
         </div>
@@ -124,7 +127,8 @@
 
                                     {{--<iframe src="http://waimarieham.wainet.org/wp-content/uploads/2020/10/Waimarie-schedule-term-4_2020.pdf" frameborder="0" width="100%" height="400px"></iframe>--}}
 
-                                    <object type="application/pdf" data="http://waimarieham.wainet.org/wp-content/uploads/2020/10/Waimarie-schedule-term-4_2020.pdf" width="100%" height="100%" style="height: 100vh;">No Support</object>
+                                    <object type="application/pdf" data="http://waimarieham.wainet.org/wp-content/uploads/2020/10/Waimarie-schedule-term-4_2020.pdf" width="100%" height="100%" style="height: 100vh;">
+                                        Programme 4</object>
                             </div>
 
                         </div><!--/.search-box -->

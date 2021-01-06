@@ -28,6 +28,30 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
+                            {{ Form::text('experience',old('experience'),['class'=>'form-control', 'required']) }}
+                            {{ Form::label('experience','Experience*') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::text('volunteer',old('volunteer'),['class'=>'form-control', 'required']) }}
+                            {{ Form::label('volunteer','Volunteer*') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            {{ Form::text('work',old('work'),['class'=>'form-control', 'required']) }}
+                            {{ Form::label('work','Work*') }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
                             {{ Form::textarea('content',old('content'),['class'=>'my-ckeditor','required', 'id' => 'my-ckeditor']) }}
                             <br>
                             {{ Form::label('Content','Content')}}

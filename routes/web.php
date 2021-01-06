@@ -77,7 +77,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     /*
 |--------------------------------------------------------------------------
 | About CRUD Routes
-|-----Us---------------------------------------------------------------------
+|--------------------------------------------------------------------------
 */
     Route::group(['as'=>'about.', 'prefix'=>'about' ], function(){
         Route::get('','AboutController@index')->name('index');
@@ -86,6 +86,79 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::put('{about}','AboutController@update')->name('update');
         Route::get('{about}/edit','AboutController@edit')->name('edit');
         Route::delete('{about}','AboutController@delete')->name('destroy');
+    });
+
+    /*
+|--------------------------------------------------------------------------
+| Community Garden CRUD Routes
+|--------------------------------------------------------------------------
+*/
+    Route::group(['as'=>'communitygarden.', 'prefix'=>'communitygarden' ], function(){
+        Route::get('','CommunityGardenController@index')->name('index');
+        Route::get('create','CommunityGardenController@create')->name('create');
+        Route::post('','CommunityGardenController@store')->name('store');
+        Route::put('{communitygarden}','CommunityGardenController@update')->name('update');
+        Route::get('{communitygarden}/edit','CommunityGardenController@edit')->name('edit');
+        Route::delete('{communitygarden}','CommunityGardenController@delete')->name('destroy');
+    });
+
+    /*
+|--------------------------------------------------------------------------
+| Community Garden Photos CRUD Routes
+|--------------------------------------------------------------------------
+*/
+    Route::group(['as'=>'communitygardenphoto.', 'prefix'=>'communitygardenphoto' ], function(){
+        Route::get('','CommunityGardenPhotoController@index')->name('index');
+        Route::get('create','CommunityGardenPhotoController@create')->name('create');
+        Route::post('','CommunityGardenPhotoController@store')->name('store');
+        Route::put('{communitygardenphoto}','CommunityGardenPhotoController@update')->name('update');
+        Route::get('{communitygardenphoto}/edit','CommunityGardenPhotoController@edit')->name('edit');
+        Route::delete('{communitygardenphoto}','CommunityGardenPhotoController@delete')->name('destroy');
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Scholarship Details CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as'=>'scholarshipdescription.', 'prefix'=>'scholarshipdescription' ], function(){
+        Route::get('','ScholarshipDescriptionController@index')->name('index');
+        Route::get('create','ScholarshipDescriptionController@create')->name('create');
+        Route::post('','ScholarshipDescriptionController@store')->name('store');
+        Route::put('{scholarshipdescription}','ScholarshipDescriptionController@update')->name('update');
+        Route::get('{scholarshipdescription}/edit','ScholarshipDescriptionController@edit')->name('edit');
+        Route::delete('{scholarshipdescription}','ScholarshipDescriptionController@delete')->name('destroy');
+    });
+
+
+    /*
+|--------------------------------------------------------------------------
+| Scholarship List CRUD Routes
+|--------------------------------------------------------------------------
+*/
+    Route::group(['as'=>'scholarshiplist.', 'prefix'=>'scholarshiplist' ], function(){
+        Route::get('','ScholarshipListController@index')->name('index');
+        Route::get('create','ScholarshipListController@create')->name('create');
+        Route::post('','ScholarshipListController@store')->name('store');
+        Route::put('{scholarshiplist}','ScholarshipListController@update')->name('update');
+        Route::get('{scholarshiplist}/edit','ScholarshipListController@edit')->name('edit');
+        Route::delete('{scholarshiplist}','ScholarshipListController@delete')->name('destroy');
+    });
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Donation CRUD Routes
+    |--------------------------------------------------------------------------
+    */
+    Route::group(['as'=>'donation.', 'prefix'=>'donation' ], function(){
+        Route::get('','DonationController@index')->name('index');
+        Route::get('create','DonationController@create')->name('create');
+        Route::post('','DonationController@store')->name('store');
+        Route::put('{donation}','DonationController@update')->name('update');
+        Route::get('{donation}/edit','DonationController@edit')->name('edit');
+        Route::delete('{donation}','DonationController@delete')->name('destroy');
     });
 
 
@@ -152,6 +225,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('{funders}/edit','FundersController@edit')->name('edit');
         Route::delete('{funders}','FundersController@delete')->name('destroy');
     });
+
+
+    /*
+   *
+     |--------------------------------------------------------------------------
+     | Funders CRUD Routes
+     |--------------------------------------------------------------------------
+     */
+    Route::group(['as'=>'donationform.', 'prefix'=>'donationform' ], function(){
+        Route::get('','DonationFormController@index')->name('index');
+        Route::get('create','DonationFormController@create')->name('create');
+        Route::post('','DonationFormController@store')->name('store');
+        Route::put('{donationform}','DonationFormController@update')->name('update');
+        Route::get('{donationform}/edit','DonationFormController@edit')->name('edit');
+        Route::delete('{donationform}','DonationFormController@delete')->name('destroy');
+    });
+
 
 
     /*
@@ -310,64 +400,59 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     });
 
+/*
+|--------------------------------------------------------------------------
+| Frontend Controller
+|--------------------------------------------------------------------------
+*/
 
-        /*
-        |--------------------------------------------------------------------------
-        | Frontend Controller
-        |--------------------------------------------------------------------------
-        */
+    Route::get('/album/{slug}', array('as' => 'show_album','uses' => 'FrontendController@gallery'));
 
-Route::get('/album/{slug}', array('as' => 'show_album','uses' => 'FrontendController@gallery'));
-
-
-Route::get('', 'FrontendController@homepage')->name('homepage');
+    Route::get('', 'FrontendController@homepage')->name('homepage');
 
 
-Route::get('/photos', 'FrontendController@photos')->name('photos');
-Route::get('/funders', 'FrontendController@funders')->name('funders');
-Route::get('/community', 'FrontendController@community')->name('community');
-Route::get('/scholarship', 'FrontendController@samfund')->name('scholarship');
-Route::get('/waikatofund', 'FrontendController@waikatofund')->name('waikatofund');
-Route::get('/donation', 'FrontendController@donation')->name('donation');
-Route::get('/newsletter', 'FrontendController@newsletter')->name('newsletter');
-Route::get('/enquiryform', 'FrontendController@enquiryform')->name('enquiryform');
-Route::get('/resources', 'FrontendController@resources')->name('resources');
-Route::get('/donate', 'FrontendController@donate')->name('donate');
-Route::get('/post/{id}', array('as' => 'post','uses' => 'FrontendController@post'));
+    Route::get('/photos', 'FrontendController@photos')->name('photos');
+    Route::get('/funders', 'FrontendController@funders')->name('funders');
+    Route::get('/community', 'FrontendController@community')->name('community');
+    Route::get('/scholarship', 'FrontendController@samfund')->name('scholarship');
+    Route::get('/waikatofund', 'FrontendController@waikatofund')->name('waikatofund');
+    Route::get('/donation', 'FrontendController@donation')->name('donation');
+    Route::get('/newsletter', 'FrontendController@newsletter')->name('newsletter');
+    Route::get('/enquiryform', 'FrontendController@enquiryform')->name('enquiryform');
+    Route::get('/resources', 'FrontendController@resources')->name('resources');
+    Route::get('/donate', 'FrontendController@donate')->name('donate');
+    Route::get('/post/{id}', array('as' => 'post','uses' => 'FrontendController@post'));
 
+    Route::get('/partner', 'FrontendController@partners')->name('partner');
+    Route::get('/partnerwithacademy', 'FrontendController@partnerwithacademy')->name('partnerwithacademy');
+    Route::get('/message', 'FrontendController@messageofgreeting')->name('message');
+    Route::get('/leadership', 'FrontendController@leadership')->name('leadership');
+    Route::get('/team', 'FrontendController@team')->name('team');
+    Route::get('/industrial-advisory', 'FrontendController@industrial')->name('industrial-advisory');
+    Route::get('/technical-advisory', 'FrontendController@technical')->name('technical-advisory');
+    Route::get('/overview', 'FrontendController@overview')->name('overview');
+    Route::get('/hire', 'FrontendController@hiregraduates')->name('hire');
+    Route::get('/learnerstestimonials', 'FrontendController@learners')->name('learnerstestimonials');
+    Route::get('/success-story', 'FrontendController@success')->name('success-story');
+    Route::get('/employerstestimonials', 'FrontendController@employers')->name('employerstestimonials');
+    Route::get('/location', 'FrontendController@locations')->name('location');
+    Route::get('/album', array('as' => 'album','uses' => 'FrontendController@album'));
+    Route::get('/gallery/{id}', array('as' => 'gallery','uses' => 'FrontendController@gallery'));
+    Route::get('/services/{id}', array('as' => 'services','uses' => 'FrontendController@services'));
 
+    Route::get('/gallery', 'FrontendController@gallerylist')->name('gallerylist');
 
+    Route::get('/volunteer', 'FrontendController@volunteer')->name('volunteer');
 
-Route::get('/partner', 'FrontendController@partners')->name('partner');
-Route::get('/partnerwithacademy', 'FrontendController@partnerwithacademy')->name('partnerwithacademy');
-Route::get('/message', 'FrontendController@messageofgreeting')->name('message');
-Route::get('/leadership', 'FrontendController@leadership')->name('leadership');
-Route::get('/team', 'FrontendController@team')->name('team');
-Route::get('/industrial-advisory', 'FrontendController@industrial')->name('industrial-advisory');
-Route::get('/technical-advisory', 'FrontendController@technical')->name('technical-advisory');
-Route::get('/overview', 'FrontendController@overview')->name('overview');
-Route::get('/hire', 'FrontendController@hiregraduates')->name('hire');
-Route::get('/learnerstestimonials', 'FrontendController@learners')->name('learnerstestimonials');
-Route::get('/success-story', 'FrontendController@success')->name('success-story');
-Route::get('/employerstestimonials', 'FrontendController@employers')->name('employerstestimonials');
-Route::get('/location', 'FrontendController@locations')->name('location');
-Route::get('/album', array('as' => 'album','uses' => 'FrontendController@album'));
-Route::get('/gallery/{id}', array('as' => 'gallery','uses' => 'FrontendController@gallery'));
-Route::get('/services/{id}', array('as' => 'services','uses' => 'FrontendController@services'));
+    Route::get('/service', 'FrontendController@service')->name('service');
+    Route::get('/roomhire', 'FrontendController@roomhire')->name('roomhire');
+    Route::get('/trevor', 'FrontendController@trevor')->name('trevor');
 
-Route::get('/gallery', 'FrontendController@gallerylist')->name('gallerylist');
+    Route::post('handle-payment', 'PayPalController@handlePayment')->name('make.payment');
+    Route::get('cancel-payment', 'PayPalController@paymentCancel')->name('cancel.payment');
+    Route::get('payment-success', 'PayPalController@paymentSuccess')->name('success.payment');
 
-
-Route::get('/service', 'FrontendController@service')->name('service');
-Route::get('/roomhire', 'FrontendController@roomhire')->name('roomhire');
-Route::get('/trevor', 'FrontendController@trevor')->name('trevor');
-
-
-Route::post('handle-payment', 'PayPalController@handlePayment')->name('make.payment');
-Route::get('cancel-payment', 'PayPalController@paymentCancel')->name('cancel.payment');
-Route::get('payment-success', 'PayPalController@paymentSuccess')->name('success.payment');
-
-Route::get('/document', 'FrontendController@document')->name('document');
-Route::get('/contact', 'FrontendController@contact')->name('contact');
-Route::post('/newsletterrequest', 'FrontendController@newsletterrequest')->name('newsletter.newsletterrequest');
-Route::post('/contactrequest', 'FrontendController@contactrequest')->name('contact.contactrequest');
+    Route::get('/document', 'FrontendController@document')->name('document');
+    Route::get('/contact', 'FrontendController@contact')->name('contact');
+    Route::post('/newsletterrequest', 'FrontendController@newsletterrequest')->name('newsletter.newsletterrequest');
+    Route::post('/contactrequest', 'FrontendController@contactrequest')->name('contact.contactrequest');

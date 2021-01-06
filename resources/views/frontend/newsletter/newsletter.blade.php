@@ -39,7 +39,6 @@
                 </p>
             </div>
 
-
             <form action="{{route('newsletter.newsletterrequest')}}" method="post" class="form-newsletter">
                 @csrf
                 <div class="row">
@@ -83,10 +82,64 @@
 
             </form>
 
+
         </div>
+    </section>
+
+    <section class="partner-area pdb80 ash-white-bg">
+
+    <div class="container pdt10">
+        <div class="banner-title">
+            <h2>Newsletter PDF's
+            </h2>
+        </div>
+
+        @foreach($downloadspdfs as $downloadspdf)
+            <iframe src="downloads/{{$downloadspdf->path}}"
+                    frameborder="0" width="100%" height="400px"></iframe>
+            <p class="section-heading">
+                {!! $downloadspdf->title !!}
+            </p>
+        @endforeach
+
+<div class="row">
+    <div class="banner-title">
+        <h2>Newsletter Images
+        </h2>
+    </div>
+        @foreach($downloadsimages as $downloadsimage)
+
+            <div class="tz-gallery">
+
+                <div class="row">
+
+                    <div class="service-carousel">
+                            <div class="col-md-4" style="width: 100%">
+                                <a class="lightbox" href="downloads/{{($downloadsimage->path)}}">
+                                    <img src="downloads/{{($downloadsimage->path)}}" alt="{{$downloadsimage->title}}"
+                                         class="img-responsive">
+                                </a>
+                                <p class="section-heading">
+                                    {!! $downloadsimage->title !!}
+                                </p>
+                            </div>
+                    </div>
+                </div>
+
+                {{--</div>--}}
+            </div>
+
+
+            @endforeach
+    </div>
+</div>
 
     </section>
 
+
+    {{--<div class="container">--}}
+        {{--<iframe src="{!! $downloadspdf !!}" frameborder="0" width="100%" height="400px"></iframe>--}}
+    {{--</div>--}}
     {{--<section class="partner-area ash-white-bg pdb80">--}}
         {{--<div class="container">--}}
 

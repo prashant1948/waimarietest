@@ -68,7 +68,6 @@
                     </p>
 
                     @endforeach
-                        {{--<a href="#" class="sune-btn black-bg">KNOW MORE <i class="ion-android-arrow-forward"></i></a>--}}
                     </div>
 
                 <div class="col-lg-3 col-xl-1">
@@ -79,6 +78,9 @@
                                         class="elementor-element elementor-element-782c92e elementor-section-stretched elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section">
                                     <div class="elementor-column-wrap  elementor-element-populated">
                                         <div class="elementor-widget-wrap">
+
+                                            @foreach($about as $ab)
+
                                             <div class="elementor-element elementor-element-a4fb1a6 elementor-position-center elementor-widget elementor-widget-counter"
                                                  data-id="a4fb1a6" data-element_type="widget"
                                                  data-widget_type="counter.default">
@@ -94,8 +96,8 @@
                                                             <div class="elementor-counter-number-wrapper"> <span
                                                                         class="elementor-counter-number-prefix"></span>
                                                                 <span class="elementor-counter-number"
-                                                                      data-duration="2000" data-to-value="17"
-                                                                      data-delimiter=",">18</span> <span
+                                                                      data-duration="2000" data-to-value={!! $ab->experience !!}
+                                                                      data-delimiter=",">{!! $ab->experience !!}</span> <span
                                                                         class="elementor-counter-number-suffix"></span>
                                                             </div>
                                                             <div class="elementor-counter-title-wrap">
@@ -123,8 +125,8 @@
                                                             <div class="elementor-counter-number-wrapper"> <span
                                                                         class="elementor-counter-number-prefix"></span>
                                                                 <span class="elementor-counter-number"
-                                                                      data-duration="2000" data-to-value="50"
-                                                                      data-delimiter=",">50</span> <span
+                                                                      data-duration="2000" data-to-value={!! $ab->volunteer !!}
+                                                                      data-delimiter=",">{!! $ab->volunteer !!}</span> <span
                                                                         class="elementor-counter-number-suffix"></span>
                                                             </div>
                                                             <div class="elementor-counter-title-wrap">
@@ -152,8 +154,8 @@
                                                             <div class="elementor-counter-number-wrapper"> <span
                                                                         class="elementor-counter-number-prefix"></span>
                                                                 <span class="elementor-counter-number"
-                                                                      data-duration="2000" data-to-value="100"
-                                                                      data-delimiter=",">100</span> <span
+                                                                      data-duration="2000" data-to-value={!! $ab->work !!}
+                                                                      data-delimiter=",">{!! $ab->work !!}</span> <span
                                                                         class="elementor-counter-number-suffix"></span>
                                                             </div>
                                                             <div class="elementor-counter-title-wrap">
@@ -166,6 +168,7 @@
                                                 </div>
                                             </div>
 
+                                                @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -268,7 +271,7 @@
 
             <div class="row">
 
-                <div class="tz-gallery">
+                <div class="tz-gallery text-center                      ">
 
                     <div class="row">
 
@@ -279,6 +282,7 @@
                                 </a>
                             </div>
                         @endforeach
+                            <a href="/photos" class="sune-btn black-bg">VIEW ALL <i class="ion-android-arrow-forward"></i></a>
 
                     </div>
 

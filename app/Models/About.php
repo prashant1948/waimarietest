@@ -18,6 +18,9 @@ class About extends Model
         'title',
 //        'meta_description',
         'content',
+        'experience',
+        'volunteer',
+        'work',
         'is_featured',
         'is_published'
     ];

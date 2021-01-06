@@ -5,8 +5,13 @@ use App\Mail\HireNotifiable;
 use App\Mail\InquiryNotifiable;
 use App\Mail\InquiryNotifiableDonation;
 use App\Mail\PartnerNotifiable;
-use App\Models\Gallery;
+use App\Models\CommunityGarden;
+use App\Models\CommunityGardenPhoto;
+use App\Models\Donation;
+use App\Models\DonationForm;
+use App\Models\ScholarshipDescription;
 use App\Models\GalleryCategory;
+use App\Models\ScholarshipList;
 use App\Models\ServiceCategory;
 use App\Models\ServicePhoto;
 use App\Models\Supporters;
@@ -15,20 +20,15 @@ use App\Models\Videos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
-use App\Models\Page;
 use App\Models\News;
 use App\Models\Album;
 use App\Models\Photo;
 use App\Models\Team;
-use App\Models\Brand;
-use App\Models\Product;
 use App\Models\Post;
 use App\Models\Download;
-use App\Models\Program;
 use App\Models\About;
 use App\Models\Service;
 use App\Models\Slider;
-use App\Models\Traininglocation;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Image;
@@ -47,7 +47,7 @@ class FrontendController extends Controller
         $setting = Setting::where('slug', '=', 'logo')->get();
         $services = ServiceCategory::where('is_published', 1)->get();
         $team = Team::where('is_published', '1')->get();
-        $galleries = GalleryCategory::where('is_published', '1')->orderBy('id', 'DESC')->limit('6')->get();
+        $galleries = GalleryCategory::where('is_published', '1')->orderBy('id', 'ASC')->limit('6')->get();
         $about = About::where('is_published', '1')->orderBy('id', 'DESC')->limit('1')->get();
         return view('frontend.home', compact('setting', 'slider', 'posts', 'services', 'team', 'galleries','about'));
     }
@@ -58,23 +58,19 @@ class FrontendController extends Controller
         $rumatis = Room::where('category', 'Raumati(Outside Room)')->orderBy('id', 'DESC')->get();
         $meetings = Room::where('category', 'Meeting/Interview Room')->orderBy('id', 'DESC')->get();
 
-
         return view('frontend.room.roomhire', compact('lounges', 'rumatis', 'meetings'));
-
     }
 
     public function gallerylist()
     {
         $galleries = Photo::where('is_published', '1')->orderBy('id', 'DESC')->get();
         return view('frontend.album.gallerylist', compact('galleries'));
-
     }
 
     public function trevor()
     {
         $trevors = Trevor::where('is_published', '1')->orderBy('id', 'DESC')->get();
         return view('frontend.room.trevor', compact('trevors'));
-
     }
 
     public function photos()
@@ -119,20 +115,28 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 
-
     public function community()
     {
-        return view('frontend.community.community');
+        $commimage = CommunityGardenPhoto::where('is_published', 1)->orderBy('id', 'DESC')->get();
+        $comdetails = CommunityGarden::where('is_published', 1)->orderBy('id', 'DESC')->limit('1')->get();
+        return view('frontend.community.community', compact('comdetails','commimage'));
     }
 
     public function samfund()
     {
-        return view('frontend.scholarships.samfund');
+        $scholarshipdescriptionsamfunds = ScholarshipDescription::where('title', 'SAM – Sport, Music & Cultural Fund')->get();
+        $scholarshipdescriptionwaikatos = ScholarshipDescription::where('title', 'Scholarships University of Waikato.')->get();
+
+        $samfunds = ScholarshipList::where('scholarship_type','<>','')->distinct()->get();
+        $samfunds = ScholarshipList::where('scholarship_type', 'SAM – Sport, Music & Cultural Fund')->get();
+        $waikatos = ScholarshipList::where('scholarship_type', 'Scholarships University of Waikato.')->get();
+
+        return view('frontend.scholarships.samfund',compact('samfunds', 'waikatos','scholarshipdescriptionsamfunds','scholarshipdescriptionwaikatos'));
     }
 
-    public function waikatofund()
+    public function volunteer()
     {
-        return view('frontend.scholarships.waikatofund');
+        return view('frontend.volunteer.volunteer');
     }
 
     public function donation()
@@ -142,13 +146,17 @@ class FrontendController extends Controller
 
     public function donate()
     {
-        return view('frontend.donation.makedonation');
+        $donations = Donation::where('is_published', '1')->orderBy('id', 'DESC')->limit('1')->get();
+        $donationformdetails = DonationForm::where('is_published', '1')->orderBy('id', 'DESC')->limit('1')->get();
+        return view('frontend.donation.makedonation',compact('donations','donationformdetails'));
     }
 
 
     public function newsletter()
     {
-        return view('frontend.newsletter.newsletter');
+        $downloadspdfs = Download::where('extension', 'pdf')->get();
+        $downloadsimages = Download::where('extension', '<>','pdf')->get();
+        return view('frontend.newsletter.newsletter', compact('downloadspdfs', 'downloadsimages'));
     }
 
 

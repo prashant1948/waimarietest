@@ -137,6 +137,7 @@ section.small_pb,
 button:focus {
 	outline:none;
 }
+
 .btn {
 	border-width: 2px;
 	cursor: pointer;
@@ -4484,6 +4485,7 @@ body.switch-open {
 .switch-active {
 	right: 0;
 }
+
 .color-switch button::after {
 	color: #ffffff;
 	content: "\f122";
@@ -4726,6 +4728,7 @@ body.switch-open {
 	background-color: #024981;
 }
 
+
 @media only screen and (max-width: 480px) {
 	.full_screen,.full_screen .carousel-item
 	{
@@ -4789,5 +4792,4 @@ body.switch-open {
 {
 	margin-left: 40px;
 }
-
 

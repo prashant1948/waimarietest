@@ -21,7 +21,10 @@
                         <tr>
                             <th width="5%">#</th>
                             <th width="15%">Title</th>
-                            <th width="50%">Content</th>
+                            <th width="35%">Content</th>
+                            <th width="5%">Experience</th>
+                            <th width="5%">Volunteer</th>
+                            <th width="5%">Work</th>
                             <th width="10%">Published</th>
                             <th width="20%" class="text-right">Actions</th>
                         </tr>

@@ -55,7 +55,42 @@ class BackendMenuCreator
             'icon'  => 'md md-description',
             'title' => 'About Section',
         ]);
-
+        array_push($menu, [
+            'class' => false,
+            'route' => route('donation.index'),
+            'icon'  => 'md md-description',
+            'title' => 'Donation Section',
+        ]);
+        array_push($menu, [
+            'class' => false,
+            'route' => route('donationform.index'),
+            'icon'  => 'md md-description',
+            'title' => 'Donation Form Description',
+        ]);
+        array_push($menu, [
+            'class' => false,
+            'route' => route('scholarshipdescription.index'),
+            'icon'  => 'md md-description',
+            'title' => 'Scholarship Description',
+        ]);
+        array_push($menu, [
+            'class' => false,
+            'route' => route('scholarshiplist.index'),
+            'icon'  => 'md md-image',
+            'title' => 'Scholarship Photos',
+        ]);
+        array_push($menu, [
+            'class' => false,
+            'route' => route('communitygarden.index'),
+            'icon'  => 'md md-rate-review',
+            'title' => 'Community Garden Description',
+        ]);
+        array_push($menu, [
+            'class' => false,
+            'route' => route('communitygardenphoto.index'),
+            'icon'  => 'md md-image',
+            'title' => 'Community Garden Photos',
+        ]);
 //             array_push($menu, [
 //            'class' => false,
 //            'route' => route('form.index'),
